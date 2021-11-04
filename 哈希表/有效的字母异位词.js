@@ -9,32 +9,32 @@
  */
 
 
-// 1.暴力解法
+// 1.暴力解法(还没做出来，确实思路...)
 // 使用双循环判断是否重复出现过
 function solution1(s, t) {
-  if (!s || !t) return false
-  if (s.length !== t.length) return false;
-  let smap = {};
-  let tmap = {};
-  for (let i = 0; i < s.length; i++) {
-    let schar = s[i];
-    smap[schar] ? (smap[schar]++) : (smap[schar] = 1)
-    let sameCount = 0;
-    for (let j = 0; j < t.length; j++) {
-      let tchar = t[j];
-      if (schar === tchar) {
-        sameCount++;
-      }
-      tmap[tchar] = sameCount;
-    }
-    if (sameCount === 0) return false
-  }
-  let keys = Object.keys(smap);
-  console.log(smap, tmap);
-  for (let i = 0; i < keys.length; i++) {
-    if (smap[keys[i]] !== tmap[keys[i]]) return false
-  }
-  return true
+  // if (!s || !t) return false
+  // if (s.length !== t.length) return false;
+  // let smap = {};
+  // let tmap = {};
+  // for (let i = 0; i < s.length; i++) {
+  //   let schar = s[i];
+  //   smap[schar] ? (smap[schar]++) : (smap[schar] = 1)
+  //   let sameCount = 0;
+  //   for (let j = 0; j < t.length; j++) {
+  //     let tchar = t[j];
+  //     if (schar === tchar) {
+  //       sameCount++;
+  //     }
+  //     tmap[tchar] = sameCount;
+  //   }
+  //   if (sameCount === 0) return false
+  // }
+  // let keys = Object.keys(smap);
+  // console.log(smap, tmap);
+  // for (let i = 0; i < keys.length; i++) {
+  //   if (smap[keys[i]] !== tmap[keys[i]]) return false
+  // }
+  // return true
 }
 // console.log(solution1("anagram", "nagaram"));
 
