@@ -1,4 +1,5 @@
 /**
+第92题：
 给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。
 请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。
 示例：
@@ -66,7 +67,7 @@ function ListNode(val, next) {
 
 // 2.头插法
 // 在需要反转的区间里，每遍历到一个节点，让这个新节点来到反转部分的起始位置。
-
+// 示意图：https://pic.leetcode-cn.com/1615105242-ZHlvOn-image.png
 var reverseBetween2 = function (head, left, right) {
   // 设置 dummyNode 是这一类问题的一般做法
   const dummy_node = new ListNode(-1);
