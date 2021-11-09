@@ -35,6 +35,7 @@ function solution(n) {
     startY++;
     offset += 2;
   }
+  // 如果n是奇数还得额外算中间那个值
   if (n % 2 === 1) {
     result[mid][mid] = count
   }
