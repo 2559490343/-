@@ -22,3 +22,51 @@ circularQueue.deQueue();  // 返回 true
 circularQueue.enQueue(4);  // 返回 true
 circularQueue.Rear();  // 返回 4
  */
+
+
+/*
+思路：
+根据问题描述，该问题使用的数据结构应该是首尾相连的 环。
+任何数据结构中都不存在环形结构，但是可以使用一维 数组 模拟，通过操作数组的索引构建一个 虚拟 的环。很多复杂数据结构都可以通过数组实现。
+对于一个固定大小的数组，任何位置都可以是队首，只要知道队列长度，就可以根据下面公式计算出队尾位置：
+tailIndex=(headIndex+count−1)modcapacity
+其中 capacity 是数组长度，count 是队列长度，headIndex 和 tailIndex 分别是队首 head 和队尾 tail 索引。下图展示了使用数组实现循环的队列的例子。
+*/
+
+function MyCircularQueue(k) {
+  this.capacity = k;
+  this.queue = Array(k).fill(null)
+  this.headIndex = 0;
+  this.count = 0;
+}
+MyCircularQueue.prototype.enQueue = function (value) {
+  if (this.count === this.capacity) {
+    // 说明队列已满
+    return false;
+  }
+  // 计算尾位置然后插入值 插入时不需要-1
+  this.queue[(this.headIndex + this.count) % this.capacity] = value;
+  this.count++;
+  return true
+}
+MyCircularQueue.prototype.deQueue = function () {
+  if (this.count === 0) return false;
+  this.headIndex = (this.headIndex + 1) % this.capacity;
+  this.count--;
+  return true;
+}
+MyCircularQueue.prototype.Front = function () {
+  if (this.count === 0) return -1;
+  return this.queue[this.headIndex];
+}
+MyCircularQueue.prototype.Rear = function () {
+  if (this.count === 0) return -1;
+  return this.queue[(this.headIndex + this.count - 1) % this.capacity]
+}
+MyCircularQueue.prototype.isEmpty = function () {
+  return this.count === 0
+}
+MyCircularQueue.prototype.isFull = function () {
+
+  return this.count === this.capacity
+}
